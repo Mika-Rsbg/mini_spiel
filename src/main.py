@@ -23,7 +23,7 @@ class Game:
     @staticmethod
     def start(method):
         global init_health, init_energy, init_strength_factor, init_distance_walked, init_food, init_mobs_found
-        with open("src/score.json") as f:
+        with open("score.json") as f:
             game_score = json.load(f)
         if method == "new":
             init_health = 200
@@ -53,7 +53,7 @@ class Interaction(Game):
     @staticmethod
     def title_screen():
         print(welcome_message)
-        user_in = input(":")
+        user_in = input(": ")
         if user_in.lower() == "load":
             Game.start("load")
         elif user_in.lower() == "new":

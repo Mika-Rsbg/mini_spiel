@@ -1,10 +1,16 @@
+init_health = 200
+init_energy = 200
+init_distance_to_treasure = 100
+init_food = 15
+init_mobs_found = 0
+
 class activities():
     def __init__(self):
-        self.health = 200
-        self.energy = 200
-        self.distance_treasure = 100
-        self.nutrition = 15
-        self.mobs_found = 0
+        self.health = init_health
+        self.energy = init_energy
+        self.distance_to_treasure = init_distance_to_treasure
+        self.food = init_food
+        self.mobs_found = init_mobs_found
     def walking(self):
         pass
     def eating(self):

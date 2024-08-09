@@ -8,6 +8,13 @@ init_food = None
 init_mobs_found = None
 
 
+welcome_message = """
+Hey there! Welcome to our little Game, little Game!
+
+Additional information is found on our GitHub.
+If you want to start, type in ok."""
+
+
 class Game:
     def __init__(self):
         pass
@@ -42,8 +49,11 @@ class Interaction(Game):
     def __init__(self):
         Game.__init__(self)
 
-    def title_screen(self):
-        pass
+    @staticmethod
+    def title_screen():
+        print(welcome_message)
+        if input(":").lower() == "ok":
+            print("Alright, let's start!")
 
     def action_request(self):
         pass
@@ -124,5 +134,7 @@ class Item:
 
 if __name__ == "__main__":
     game = Game
+    gameInteraction = Interaction
     player = Player
     game.start()
+    gameInteraction.title_screen()

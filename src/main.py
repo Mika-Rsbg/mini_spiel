@@ -1,4 +1,5 @@
 import json
+from random import randint
 init_health = None
 init_energy = None
 init_strength_factor = None
@@ -46,9 +47,22 @@ class Player:
         self.mobs_found = init_mobs_found
 
     def walk(self):
+        self.distance_walked + 1
+        self.energy - 1
+
+        if randint(1, 100) <= 20:
+            self.item_found()
+        
+        if randint(1, 100) <= 20:
+            self.animal_found()
+
+        if randint(1, 100) <= 20:
+            self.mob_found
+            
+    def eat(self):
         pass
 
-    def eat(self):
+    def item_found(self):
         pass
 
     def animal_found(self):
@@ -57,8 +71,6 @@ class Player:
     def mob_found(self):
         pass
 
-    def item_found(self):
-        pass
 
 
 class Fight(Player):
@@ -80,4 +92,11 @@ class Monster:
         pass
 
     def die(self):
+        pass
+
+class Item:
+    def __init__(self):
+        pass
+
+    def item_found(self):
         pass

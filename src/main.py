@@ -59,11 +59,17 @@ class Interaction(Game):
         elif user_in.lower() == "new":
             Game.start("new")
 
-    def action_request(self):
+    def request_action(self):
         print("W/w to walk")
         print("E/e to eat")
         print("-----------")
-        aaa_input = input("What do you wanna do:")
+        player_input = input("What do you wanna do:")
+
+    def execute_action(action_id, self):
+        if action_id == "w" or action_id == "W":
+            player.walk()
+        if action_id == "e" or action_id == "E":
+            player.eat()
 
     def response(self):
         pass

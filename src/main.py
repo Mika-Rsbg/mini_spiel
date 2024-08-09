@@ -12,7 +12,8 @@ welcome_message = """
 Hey there! Welcome to our little Game, little Game!
 
 Additional information is found on our GitHub.
-If you want to start, type in ok."""
+If you want to load the last game, type in "load".
+If you want to start a new game, type "new"."""
 
 
 class Game:
@@ -20,18 +21,18 @@ class Game:
         pass
 
     @staticmethod
-    def start():
+    def start(method):
         global init_health, init_energy, init_strength_factor, init_distance_walked, init_food, init_mobs_found
         with open("src/score.json") as f:
             game_score = json.load(f)
-        if len(list(game_score)) == 0:
+        if method == "new":
             init_health = 200
             init_energy = 200
             init_strength_factor = 1.0
             init_distance_walked = 0
             init_food = 15
             init_mobs_found = 0
-        else:
+        elif method == "load":
             for x in game_score.keys():
                 exec("{fx} = {fvalue}".format(fx=x, fvalue=game_score[x]))
 
@@ -52,8 +53,11 @@ class Interaction(Game):
     @staticmethod
     def title_screen():
         print(welcome_message)
-        if input(":").lower() == "ok":
-            print("Alright, let's start!")
+        user_in = input(":")
+        if user_in.lower() == "load":
+            Game.start("load")
+        elif user_in.lower() == "new":
+            Game.start("new")
 
     def action_request(self):
         pass
@@ -136,5 +140,7 @@ if __name__ == "__main__":
     game = Game
     gameInteraction = Interaction
     player = Player
-    game.start()
+    item = Item
+    monster = Monster
+    playerFight = Fight
     gameInteraction.title_screen()

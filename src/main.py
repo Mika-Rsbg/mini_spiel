@@ -47,8 +47,8 @@ class Player:
         self.mobs_found = init_mobs_found
 
     def walk(self):
-        self.distance_walked + 1
-        self.energy - 1
+        self.distance_walked += 1
+        self.energy -= 1
 
         if randint(1, 100) <= 20:
             self.item_found()
@@ -57,7 +57,7 @@ class Player:
             self.animal_found()
 
         if randint(1, 100) <= 20:
-            self.mob_found
+            self.mob_found()
             
     def eat(self):
         pass
@@ -70,7 +70,6 @@ class Player:
 
     def mob_found(self):
         pass
-
 
 
 class Fight(Player):
@@ -93,6 +92,7 @@ class Monster:
 
     def die(self):
         pass
+
 
 class Item:
     def __init__(self):

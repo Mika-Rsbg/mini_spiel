@@ -74,6 +74,9 @@ class Interaction(Game):
         if action_id == "e" or action_id == "E":
             player.eat()
 
+    def request_food(self):
+        pass
+
     def response(self):
         pass
 
@@ -106,7 +109,10 @@ class Player:
             self.mob_found()
             
     def eat(self):
-        pass
+        # "food" is not the final variable name
+        food = Interaction.request_food()
+        self.food -= 1
+        # self.energy +=
 
     def item_found(self):
         pass

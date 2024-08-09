@@ -38,6 +38,26 @@ class Game:
         pass
 
 
+class Interaction(Game):
+    def __init__(self):
+        Game.__init__(self)
+
+    def title_screen(self):
+        pass
+
+    def action_request(self):
+        pass
+
+    def response(self):
+        pass
+
+    def end_screen(self):
+        pass
+
+    def death_screen(self):
+        pass
+
+
 class Player:
     def __init__(self):
         self.health = init_health

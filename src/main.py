@@ -64,6 +64,7 @@ class Interaction(Game):
         print("E/e to eat")
         print("-----------")
         player_input = input("What do you wanna do:")
+        return player_input
 
     def execute_action(action_id, self):
         if action_id == "w" or action_id == "W":

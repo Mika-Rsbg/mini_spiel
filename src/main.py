@@ -15,7 +15,7 @@ class Game:
     @staticmethod
     def start():
         global init_health, init_energy, init_strength_factor, init_distance_walked, init_food, init_mobs_found
-        with open("score.json") as f:
+        with open("src/score.json") as f:
             game_score = json.load(f)
         if len(list(game_score)) == 0:
             init_health = 200

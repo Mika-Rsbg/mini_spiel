@@ -100,3 +100,9 @@ class Item:
 
     def item_found(self):
         pass
+
+
+if __name__ == "__main__":
+    game = Game
+    player = Player
+    game.start()

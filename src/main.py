@@ -56,7 +56,10 @@ class Interaction(Game):
             print("Alright, let's start!")
 
     def action_request(self):
-        pass
+        print("W/w to walk")
+        print("E/e to eat")
+        print("-----------")
+        aaa_input = input("What do you wanna do:")
 
     def response(self):
         pass

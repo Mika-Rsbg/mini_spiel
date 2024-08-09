@@ -1,2 +1,2 @@
-# mini_spiel
+# MiniGame
  

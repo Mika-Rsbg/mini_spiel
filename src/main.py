@@ -26,14 +26,14 @@ class Game:
 
     @staticmethod
     def start(method):
-        global init_health, init_energy, init_strength_factor, init_distance_walked, init_food, init_mobs_found, init_item
+        global init_health, init_energy, init_strength_factor, init_distance_walked, init_food, init_mobs_found, init_items
         if method == "new":
             init_health = 200
             init_energy = 200
             init_strength_factor = 1.0
             init_distance_walked = 0
             init_food = 15
-            init_item = 0
+            init_items = 0
             init_mobs_found = 0
         elif method == "load":
             with open("src/score.json") as f:
@@ -44,7 +44,8 @@ class Game:
     def restart(self):
         pass
 
-    def stop(self):
+    @staticmethod
+    def stop():
         gameInteraction.response("list", "stop_message")
         json_data = {
             "init_health": player.health,

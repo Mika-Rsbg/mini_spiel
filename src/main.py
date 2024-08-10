@@ -86,6 +86,11 @@ class Interaction(Game):
         return food_energy
 
     def response(self, t, content):
+        """
+        :param t: The type of input given ("text" or "list")
+        :param content: The content given
+        :return: nothing
+        """
         if t == "text":
             print(content)
         elif t == "list":
@@ -167,10 +172,11 @@ class Item:
 
 
 if __name__ == "__main__":
-    game = Game
-    gameInteraction = Interaction
-    player = Player
-    item = Item
-    monster = Monster
-    playerFight = Fight
+    game = Game()
+    gameInteraction = Interaction()
+    player = Player()
+    item = Item()
+    monster = Monster()
+    playerFight = Fight()
     gameInteraction.title_screen()
+    gameInteraction.response("text", "Hallo")

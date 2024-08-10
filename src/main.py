@@ -1,4 +1,5 @@
 import json
+import sys
 from random import randint
 init_health = None
 init_energy = None
@@ -44,8 +45,9 @@ class Game:
     def stop(self):
         pass
 
-    def kill(self):
-        pass
+    @staticmethod
+    def kill():
+        sys.exit()
 
 
 # noinspection PyArgumentList

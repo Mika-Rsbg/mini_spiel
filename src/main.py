@@ -76,7 +76,7 @@ class Interaction(Game):
             player.eat()
 
     def request_food(self):
-        pass
+        return 5
 
     def response(self):
         pass
@@ -111,10 +111,9 @@ class Player:
             self.mob_found()
             
     def eat(self):
-        # "food" is not the final variable name
-        food = Interaction.request_food()
+        food_energie = Interaction.request_food()
         self.food -= 1
-        # self.energy +=
+        self.energy += food_energie
 
     def item_found(self):
         pass

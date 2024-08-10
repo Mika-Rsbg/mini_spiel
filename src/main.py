@@ -80,7 +80,8 @@ class Interaction(Game):
             player.eat()
 
     def request_food(self):
-        return 5
+        food_energy = 5
+        return food_energy
 
     def response(self):
         pass

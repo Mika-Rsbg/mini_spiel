@@ -6,7 +6,7 @@ init_energy = None
 init_strength_factor = None
 init_distance_walked = None
 init_food = None
-init_item = None
+init_items = None
 init_mobs_found = None
 
 init_dict_responses = {}
@@ -45,7 +45,18 @@ class Game:
         pass
 
     def stop(self):
-        pass
+        gameInteraction.response("list", "stop_message")
+        json_data = {
+            "init_health": player.health,
+            "init_energy": player.energy,
+            "init_strength_factor": player.strength_factor,
+            "init_distance_walked": player.distance_walked,
+            "init_food": player.food,
+            "init_items": player.items,
+            "init_mobs_found": player.mobs_found
+        }
+        with open("src/score.json") as f:
+            json.dump(json_data, f)
 
     @staticmethod
     def kill():
@@ -108,9 +119,10 @@ class Player:
     def __init__(self):
         self.health = init_health
         self.energy = init_energy
+        self.strength_factor = init_strength_factor
         self.distance_walked = init_distance_walked
         self.food = init_food
-        self.init_item = init_item
+        self.items = init_items
         self.mobs_found = init_mobs_found
 
     def walk(self):
@@ -179,4 +191,3 @@ if __name__ == "__main__":
     monster = Monster()
     playerFight = Fight()
     gameInteraction.title_screen()
-    gameInteraction.response("text", "Hallo")

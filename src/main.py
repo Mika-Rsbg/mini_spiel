@@ -23,8 +23,6 @@ class Game:
     @staticmethod
     def start(method):
         global init_health, init_energy, init_strength_factor, init_distance_walked, init_food, init_mobs_found
-        with open("score.json") as f:
-            game_score = json.load(f)
         if method == "new":
             init_health = 200
             init_energy = 200
@@ -33,6 +31,8 @@ class Game:
             init_food = 15
             init_mobs_found = 0
         elif method == "load":
+            with open("src/score.json") as f:
+                game_score = json.load(f)
             for x in game_score.keys():
                 exec("{fx} = {fvalue}".format(fx=x, fvalue=game_score[x]))
 

@@ -46,6 +46,7 @@ class Game:
         pass
 
 
+# noinspection PyArgumentList
 class Interaction(Game):
     def __init__(self):
         Game.__init__(self)
@@ -87,6 +88,7 @@ class Interaction(Game):
         pass
 
 
+# noinspection PyArgumentList
 class Player:
     def __init__(self):
         self.health = init_health

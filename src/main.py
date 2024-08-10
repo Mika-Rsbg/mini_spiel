@@ -9,6 +9,8 @@ init_food = None
 init_item = None
 init_mobs_found = None
 
+init_dict_responses = {}
+
 
 welcome_message = """
 Hey there! Welcome to our little Game, little Game!
@@ -20,7 +22,7 @@ If you want to start a new game, type "new"."""
 
 class Game:
     def __init__(self):
-        pass
+        self.dict_responses = init_dict_responses
 
     @staticmethod
     def start(method):
@@ -83,8 +85,11 @@ class Interaction(Game):
         food_energy = 5
         return food_energy
 
-    def response(self):
-        pass
+    def response(self, t, content):
+        if t == "text":
+            print(content)
+        elif t == "list":
+            print(self.dict_responses[content])
 
     def end_screen(self):
         pass

@@ -5,6 +5,7 @@ init_energy = None
 init_strength_factor = None
 init_distance_walked = None
 init_food = None
+init_item = None
 init_mobs_found = None
 
 
@@ -22,13 +23,14 @@ class Game:
 
     @staticmethod
     def start(method):
-        global init_health, init_energy, init_strength_factor, init_distance_walked, init_food, init_mobs_found
+        global init_health, init_energy, init_strength_factor, init_distance_walked, init_food, init_mobs_found, init_item
         if method == "new":
             init_health = 200
             init_energy = 200
             init_strength_factor = 1.0
             init_distance_walked = 0
             init_food = 15
+            init_item = 0
             init_mobs_found = 0
         elif method == "load":
             with open("src/score.json") as f:
@@ -95,6 +97,7 @@ class Player:
         self.energy = init_energy
         self.distance_walked = init_distance_walked
         self.food = init_food
+        self.init_item = init_item
         self.mobs_found = init_mobs_found
 
     def walk(self):

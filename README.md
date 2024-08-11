@@ -49,7 +49,7 @@ Contributions are welcome! If you find bugs or have suggestions for new features
 
 ## License
 
-This project is licensed under the GPL v.3.0 License. See the `LICENSE` file for more information.
+This project is licensed under the GPL v.3.0 License. See the [LICENSE](https://github.com/Mika-Rsbg/mini_spiel/blob/main/LICENSE) file for more information.
 
 ## Contact
 

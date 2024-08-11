@@ -17,7 +17,7 @@ Welcome to the **Mini-Game**! This is a simple Python game that you can play dir
      - Type `new` to start a new game.
      - Type `load` to load the last saved game state.
 
-3. **In-Game Actions:**
+3. **In-Game Actions: (Examples)**
    - **Walk:** Type `W` or `w` to walk. Walking consumes energy and may lead to finding items, encountering animals, or fighting monsters.
    - **Eat:** Type `E` or `e` to eat. Eating will restore some of your energy using the food you have collected.
 

@@ -179,10 +179,7 @@ class Monster:
 class Item:
     def __init__(self, rarity):
         self.rarity = rarity
-    
-    def item_found(self):
-        pass
-
+        
 
 if __name__ == "__main__":
     game = Game()

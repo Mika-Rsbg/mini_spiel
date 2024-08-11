@@ -83,8 +83,8 @@ class Interaction(Game):
         print("W/w to walk")
         print("E/e to eat")
         print("-----------")
-        player_input = input("What do you wanna do:")
-        return player_input
+        player_input_action_id = input("What do you wanna do:")
+        return player_input_action_id
 
     @staticmethod
     def execute_action(action_id):

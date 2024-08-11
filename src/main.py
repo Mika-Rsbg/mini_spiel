@@ -145,7 +145,7 @@ class Player:
         self.energy += food_energie
 
     def item_found(self):
-        rarity = randint()
+        rarity = randint(1, 2)
 
     def animal_found(self):
         pass
@@ -175,11 +175,16 @@ class Monster:
     def die(self):
         pass
 
+item_rarities = {1 : "common", 2 : "rare"}
 
 class Item:
     def __init__(self, rarity):
         self.rarity = rarity
-        
+    
+    def get_rarity(self):
+        rarity = item_rarities[self.rarity]
+        return rarity
+
 
 if __name__ == "__main__":
     game = Game()

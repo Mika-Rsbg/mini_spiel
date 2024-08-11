@@ -6,7 +6,7 @@ init_energy = None
 init_strength_factor = None
 init_distance_walked = None
 init_food = None
-init_items = None
+init_items = {1:0, 2:0}
 init_mobs_found = None
 
 init_dict_responses = {}
@@ -145,7 +145,13 @@ class Player:
         self.energy += food_energie
 
     def item_found(self):
-        rarity = randint(1, 2)
+        rarity_factor = randint(1, 100)
+        if rarity_factor <= 10:
+            rarity = 2
+            self.items[rarity] += 1
+        else:
+            rarity = 1
+            self.items[rarity] += 1
 
     def animal_found(self):
         pass
@@ -174,6 +180,7 @@ class Monster:
 
     def die(self):
         pass
+
 
 item_rarities = {1 : "common", 2 : "rare"}
 

@@ -145,7 +145,7 @@ class Player:
         self.energy += food_energie
 
     def item_found(self):
-        pass
+        rarity = randint()
 
     def animal_found(self):
         pass
@@ -177,9 +177,9 @@ class Monster:
 
 
 class Item:
-    def __init__(self):
-        pass
-
+    def __init__(self, rarity):
+        self.rarity = rarity
+    
     def item_found(self):
         pass
 

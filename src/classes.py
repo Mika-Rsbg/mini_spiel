@@ -42,8 +42,11 @@ class Game:
             try:
                 with open("src/score.json") as f:
                     game_score = json.load(f)
-                for x in game_score.keys():
-                    exec("{fx} = {fvalue}".format(fx=x, fvalue=game_score[x]))
+                if len(list(game_score)) < 7:
+                    gameInteraction.notifyPlayer("text", "The JSON File is not big enough, some values are missing")
+                else:
+                    for x in game_score.keys():
+                        exec("{fx} = {fvalue}".format(fx=x, fvalue=game_score[x]))
                 player = Player()
             except Exception as e:
                 gameInteraction.notifyPlayer("text", """Failed, the file might not exist.

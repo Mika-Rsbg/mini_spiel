@@ -86,15 +86,14 @@ class Interaction(Game):
 
     @staticmethod
     def request_action():
-        print("!-----------")
-        print("W/w to walk")
-        print("E/e to eat")
-        print("?-----------")
-        action_id = input("What do you wanna do >")
+        action_id = gameInteraction.getPlayerResponse("""What do you wanna do?
+        "w" to walk
+        "e" to eat
+        """)
 
-        if action_id == "w" or action_id == "W":
+        if action_id.lower() == "w":
             player.walk()
-        if action_id == "e" or action_id == "E":
+        if action_id.lower() == "e":
             player.eat()
 
     @staticmethod

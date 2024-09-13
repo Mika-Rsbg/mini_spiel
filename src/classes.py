@@ -18,9 +18,7 @@ init_dict_responses = {}
 welcome_message = """
 Hey there! Welcome to our little Game, little Game!
 
-Additional information is found on our GitHub.
-If you want to load the last game, type in "load".
-If you want to start a new game, type "new"."""
+Additional information is found on our GitHub."""
 
 
 class Game:

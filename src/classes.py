@@ -90,11 +90,8 @@ class Interaction(Game):
         print("W/w to walk")
         print("E/e to eat")
         print("?-----------")
-        player_input_action_id = input("What do you wanna do >")
-        return player_input_action_id
+        action_id = input("What do you wanna do >")
 
-    @staticmethod
-    def execute_action(action_id):
         if action_id == "w" or action_id == "W":
             player.walk()
         if action_id == "e" or action_id == "E":

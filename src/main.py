@@ -182,16 +182,10 @@ class Monster:
         pass
 
 
-class Item:
-    def __init__(self, rarity):
-        pass
-
-
 if __name__ == "__main__":
     game = Game()
     gameInteraction = Interaction()
     player = Player()
-    item = Item()
     monster = Monster()
     playerFight = Fight()
     gameInteraction.title_screen()

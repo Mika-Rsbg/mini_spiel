@@ -1,6 +1,7 @@
 import json
 import sys
 from random import randint
+import os
 
 init_health = None
 init_energy = None
@@ -9,6 +10,8 @@ init_distance_walked = None
 init_food = None
 init_items = {1: 0, 2: 0}
 init_mobs_found = None
+
+enableClearingTerminalScreen = True
 
 init_dict_responses = {}
 
@@ -120,6 +123,14 @@ class Interaction(Game):
         print("?-----")
         playerIn = input(content + " >")
         return playerIn
+
+    @staticmethod
+    def clear_terminal():
+        global enableClearingTerminalScreen
+        if enableClearingTerminalScreen:
+            os.system('cls' if os.name == 'nt' else 'clear')
+        else:
+            pass
 
     def end_screen(self):
         pass

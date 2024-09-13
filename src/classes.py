@@ -16,7 +16,7 @@ enableClearingTerminalScreen = True
 init_dict_responses = {}
 
 welcome_message = """
-Hey there! Welcome to our little Game, little Game!
+Hey there! Welcome to our little Game, Mini Game!
 
 Additional information is found on our GitHub.
 If you want to load the last game, type in "load".

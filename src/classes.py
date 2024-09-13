@@ -207,5 +207,3 @@ class Monster:
 
 game = Game()
 gameInteraction = Interaction()
-monster = Monster()
-playerFight = Fight()

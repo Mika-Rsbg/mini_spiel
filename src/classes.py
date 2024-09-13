@@ -27,7 +27,7 @@ class Game:
 
     @staticmethod
     def start():
-        global init_health, init_energy, init_strength_factor, init_distance_walked, init_food, init_mobs_found, init_items
+        global init_health, init_energy, init_strength_factor, init_distance_walked, init_food, init_mobs_found, init_items, player
         method = gameInteraction.getPlayerResponse("""Wanna start a new game ("new") or load an existing ("load")""")
         if method == "new":
             init_health = 200
@@ -37,12 +37,14 @@ class Game:
             init_food = 15
             init_items = 0
             init_mobs_found = 0
+            player = Player()
         elif method == "load":
             try:
                 with open("src/score.json") as f:
                     game_score = json.load(f)
                 for x in game_score.keys():
                     exec("{fx} = {fvalue}".format(fx=x, fvalue=game_score[x]))
+                player = Player()
             except Exception as e:
                 gameInteraction.notifyPlayer("text", """Failed, the file might not exist.
                 Error code:{ferror}""".format(ferror=e))

@@ -35,7 +35,7 @@ Welcome to the **Mini-Game**! This is a simple Python game that you can play dir
 
 ## Code Structure
 
-- **main.py:** Contains the main game logic
+- **main.py:** Contains the main game logic.
 - **classes.py:** Contains all the classes:
   - `Game`: Manages the game's start, stop, and kill functions.
   - `Interaction`: Handles user input and game interactions.

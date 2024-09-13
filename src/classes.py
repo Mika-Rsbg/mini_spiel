@@ -25,8 +25,9 @@ class Game:
         self.dict_responses = init_dict_responses
 
     @staticmethod
-    def start(method):
+    def start():
         global init_health, init_energy, init_strength_factor, init_distance_walked, init_food, init_mobs_found, init_items
+        method = gameInteraction.getPlayerResponse("""Wanna start a new game ("new") or load an existing ("load")""")
         if method == "new":
             init_health = 200
             init_energy = 200
@@ -36,17 +37,22 @@ class Game:
             init_items = 0
             init_mobs_found = 0
         elif method == "load":
-            with open("src/score.json") as f:
-                game_score = json.load(f)
-            for x in game_score.keys():
-                exec("{fx} = {fvalue}".format(fx=x, fvalue=game_score[x]))
+            try:
+                with open("src/score.json") as f:
+                    game_score = json.load(f)
+                for x in game_score.keys():
+                    exec("{fx} = {fvalue}".format(fx=x, fvalue=game_score[x]))
+            except Exception as e:
+                gameInteraction.notifyPlayer("text", """Failed, the file might not exist.
+                Error code:{ferror}""".format(ferror=e))
+                game.start()
 
     def restart(self):
         pass
 
     @staticmethod
     def stop():
-        gameInteraction.response("list", "stop_message")
+        gameInteraction.notifyPlayer("list", "stop_message")
         json_data = {
             "init_health": player.health,
             "init_energy": player.energy,
@@ -64,7 +70,6 @@ class Game:
         sys.exit()
 
 
-# noinspection PyArgumentList
 class Interaction(Game):
     def __init__(self):
         Game.__init__(self)
@@ -72,11 +77,6 @@ class Interaction(Game):
     @staticmethod
     def title_screen():
         print(welcome_message)
-        user_in = input(": ")
-        if user_in.lower() == "load":
-            Game.start("load")
-        elif user_in.lower() == "new":
-            Game.start("new")
 
     @staticmethod
     def request_action():
@@ -94,20 +94,32 @@ class Interaction(Game):
             player.eat()
 
     @staticmethod
-    def request_food(self):
+    def request_food():
         food_energy = 5
         return food_energy
 
-    def response(self, t, content):
+    def notifyPlayer(self, t, content):
         """
         :param t: The type of input given ("text" or "list")
         :param content: The content given
         :return: nothing
         """
         if t == "text":
+            print("!-----")
             print(content)
         elif t == "list":
+            print("!-----")
             print(self.dict_responses[content])
+
+    @staticmethod
+    def getPlayerResponse(content):
+        """
+        :param content: The question to ask
+        :return: The players response
+        """
+        print("?-----")
+        playerIn = input(content + " >")
+        return playerIn
 
     def end_screen(self):
         pass
@@ -116,7 +128,6 @@ class Interaction(Game):
         pass
 
 
-# noinspection PyArgumentList
 class Player:
     def __init__(self):
         self.health = init_health

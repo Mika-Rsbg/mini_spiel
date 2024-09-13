@@ -83,10 +83,11 @@ class Interaction(Game):
 
     @staticmethod
     def request_action():
+        print("!-----------")
         print("W/w to walk")
         print("E/e to eat")
-        print("-----------")
-        player_input_action_id = input("What do you wanna do:")
+        print("?-----------")
+        player_input_action_id = input("What do you wanna do >")
         return player_input_action_id
 
     @staticmethod
@@ -207,6 +208,5 @@ class Monster:
 
 game = Game()
 gameInteraction = Interaction()
-player = Player()
 monster = Monster()
 playerFight = Fight()

@@ -8,7 +8,7 @@ init_energy = None
 init_strength_factor = None
 init_distance_walked = None
 init_food = None
-init_items = {1: 0, 2: 0}
+init_items = None
 init_mobs_found = None
 
 enableClearingTerminalScreen = True
@@ -34,8 +34,8 @@ class Game:
             init_energy = 200
             init_strength_factor = 1.0
             init_distance_walked = 0
-            init_food = 15
-            init_items = 0
+            init_food = {"food": 15}
+            init_items = {"item": 0}
             init_mobs_found = 0
             player = Player()
         elif method == "load":
@@ -89,12 +89,15 @@ class Interaction(Game):
         action_id = gameInteraction.getPlayerResponse("""What do you wanna do?
 "w" to walk
 "e" to eat
+f
 """)
 
         if action_id.lower() == "w":
             player.walk()
         if action_id.lower() == "e":
             player.eat()
+        if action_id.lower() == "f":
+            Game.stop()
 
     @staticmethod
     def request_food():
@@ -168,13 +171,7 @@ class Player:
         self.energy += food_energie
 
     def item_found(self):
-        rarity_factor = randint(1, 100)
-        if rarity_factor <= 10:
-            rarity = 2
-            self.items[rarity] += 1
-        else:
-            rarity = 1
-            self.items[rarity] += 1
+        self.items["item"] += 1
 
     def animal_found(self):
         pass

@@ -40,18 +40,23 @@ class Game:
             player = Player()
         elif method == "load":
             try:
-                with open("src/score.json") as f:
+                with open("src/score.json", "r") as f:
                     game_score = json.load(f)
                 if len(list(game_score)) < 7:
                     gameInteraction.notifyPlayer("text", "The JSON File is not big enough, some values are missing")
                 else:
-                    for x in game_score.keys():
-                        exec("{fx} = {fvalue}".format(fx=x, fvalue=game_score[x]))
+                    init_health = game_score.get("init_health", 200)
+                    init_energy = game_score.get("init_energy", 200)
+                    init_strength_factor = game_score.get("init_strength_factor", 1.0)
+                    init_distance_walked = game_score.get("init_distance_walked", 0)
+                    init_food = game_score.get("init_food", {"food": 15})
+                    init_items = game_score.get("init_items", {"item": 0})
+                    init_mobs_found = game_score.get("init_mobs_found", 0)
                 player = Player()
             except Exception as e:
                 gameInteraction.notifyPlayer("text", """Failed, the file might not exist.
                 Error code:{ferror}""".format(ferror=e))
-                game.start()
+                Game.start()
 
     def restart(self):
         game.stop()
@@ -59,7 +64,7 @@ class Game:
 
     @staticmethod
     def stop():
-        gameInteraction.notifyPlayer("list", "stop_message")
+        gameInteraction.end_screen()
         json_data = {
             "init_health": player.health,
             "init_energy": player.energy,
@@ -69,8 +74,9 @@ class Game:
             "init_items": player.items,
             "init_mobs_found": player.mobs_found
         }
-        with open("src/score.json") as f:
+        with open("src/score.json", "w") as f:
             json.dump(json_data, f)
+        gameInteraction.kill()
 
     @staticmethod
     def kill():
@@ -105,8 +111,7 @@ class Interaction(Game):
         food_energy = 5
         return food_energy
 
-    @staticmethod
-    def notifyPlayer(self, t, content):
+    def notifyPlayer(t, content, self):
         """
         :param t: The type of input given ("text" or "list")
         :param content: The content given
@@ -138,7 +143,7 @@ class Interaction(Game):
             pass
 
     def end_screen(self):
-        pass
+        gameInteraction.notifyPlayer("text", "stop_message")
 
     def death_screen(self):
         pass
@@ -146,13 +151,13 @@ class Interaction(Game):
 
 class Player:
     def __init__(self):
-        self.health = init_health
-        self.energy = init_energy
-        self.strength_factor = init_strength_factor
-        self.distance_walked = init_distance_walked
+        self.health = int(init_health)
+        self.energy = int(init_energy)
+        self.strength_factor = float(init_strength_factor)
+        self.distance_walked = int(init_distance_walked)
         self.food = init_food
         self.items = init_items
-        self.mobs_found = init_mobs_found
+        self.mobs_found = int(init_mobs_found)
 
     def walk(self):
         self.distance_walked += 1

@@ -54,7 +54,8 @@ class Game:
                 game.start()
 
     def restart(self):
-        pass
+        game.stop()
+        game.start()
 
     @staticmethod
     def stop():
@@ -89,14 +90,14 @@ class Interaction(Game):
         action_id = gameInteraction.getPlayerResponse("""What do you wanna do?
 "w" to walk
 "e" to eat
-f
+"s" to stop the game
 """)
 
         if action_id.lower() == "w":
             player.walk()
         if action_id.lower() == "e":
             player.eat()
-        if action_id.lower() == "f":
+        if action_id.lower() == "s":
             Game.stop()
 
     @staticmethod
@@ -104,6 +105,7 @@ f
         food_energy = 5
         return food_energy
 
+    @staticmethod
     def notifyPlayer(self, t, content):
         """
         :param t: The type of input given ("text" or "list")
